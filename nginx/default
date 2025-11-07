@@ -1,0 +1,12 @@
+upstream backend {
+    server <BLUE_PRIVATE_IP>:80;
+    # server <GREEN_PRIVATE_IP>:80;  # Uncomment when switching to Green
+}
+
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://backend;
+    }
+}
